@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"ContractRecord",
+  "type":"object",
+  "required":["recordType","jurisdiction","fullName","identifier","email","entity","role","startDate","status","documentStatus"],
+  "properties":{
+    "recordType":{"type":"string","enum":["Laboral","Servicios","Educativo","Interno","Otro"]},
+    "jurisdiction":{"type":"string","minLength":2,"maxLength":120},
+    "fullName":{"type":"string","minLength":2,"maxLength":160},
+    "identifier":{"type":"string","minLength":3,"maxLength":80},
+    "email":{"type":"string","format":"email"},
+    "entity":{"type":"string","minLength":2,"maxLength":180},
+    "role":{"type":"string","minLength":2,"maxLength":120},
+    "startDate":{"type":"string","format":"date"},
+    "endDate":{"type":["string","null"],"format":"date"},
+    "status":{"type":"string","enum":["Activo","Pendiente","Suspendido","Finalizado"]},
+    "documentStatus":{"type":"string","enum":["Completa","Pendiente","No aplica"]},
+    "documentNote":{"type":["string","null"],"maxLength":2000},
+    "reference":{"type":["string","null"],"maxLength":160},
+    "notes":{"type":["string","null"],"maxLength":1000}
+  },
+  "allOf":[
+    {"if":{"properties":{"status":{"enum":["Suspendido","Finalizado"]}}},"then":{"required":["endDate"]}},
+    {"if":{"properties":{"documentStatus":{"const":"Pendiente"}}},"then":{"required":["documentNote"]}}
+  ],
+  "additionalProperties":false
+}
