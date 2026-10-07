@@ -2,7 +2,6 @@ name: Quality checks
 on: [push, pull_request]
 jobs:
   quality:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'pull_request' && github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
