@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f5f7">
+<title>Contract Modular</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;color:#111; background:#f5f5f7}
+*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:24px 18px 48px}
+header{padding:34px 4px 20px}h1{font-size:38px;letter-spacing:-1.5px;margin:0 0 8px}p{color:#6e6e73;line-height:1.45}
+.card{background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.07);border-radius:24px;padding:20px;margin:14px 0;box-shadow:0 8px 30px rgba(0,0,0,.05);backdrop-filter:blur(20px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.module{padding:16px;border-radius:18px;background:#f2f2f7}.module b{display:block;margin-bottom:5px}
+label{display:block;font-weight:600;margin:14px 0 7px}input,select,textarea{width:100%;font:inherit;padding:13px 14px;border:1px solid #d1d1d6;border-radius:14px;background:#fff}textarea{min-height:90px}
+button{border:0;border-radius:999px;padding:13px 18px;font-weight:650;font-size:16px;background:#111;color:white}button.secondary{background:#e5e5ea;color:#111}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.progress{height:8px;background:#e5e5ea;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:20%;background:#007aff}
+.small{font-size:13px}.step{display:none}.step.active{display:block}
+footer{font-size:12px;color:#8e8e93;text-align:center;margin-top:30px}
+</style>
+</head>
+<body><main>
+<header><div class="small">CONTRACT MODULAR · PREVIEW</div><h1>Crear expediente</h1><p>Formulario modular responsive para preparar y revisar un expediente contractual. Demo técnica, no asesoramiento jurídico.</p></header>
+<div class="card"><div class="progress"><i id="bar"></i></div><div id="steps"></div></div>
+<section class="step active card" data-step="0"><h2>1. Identificar</h2>
+<label>Nombre del expediente</label><input id="title" placeholder="Ej. Expediente contractual 2026">
+<label>Empresa</label><input id="company" placeholder="Razón social / nombre">
+<label>Trabajador</label><input id="worker" placeholder="Nombre y apellidos">
+<label>Documento</label><input id="doc" placeholder="DNI/NIE/NIF">
+<div class="actions"><button onclick="next()">Continuar</button></div></section>
+<section class="step card" data-step="1"><h2>2. Seleccionar módulos</h2><p>Activar únicamente los módulos que deban formar parte del expediente.</p>
+<div class="grid">
+<label class="module"><input type="checkbox" checked data-module="0" style="width:auto"> <b>A · Préstamo</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="1" style="width:auto"> <b>B · Aval</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="2" style="width:auto"> <b>C · Permanencia</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="3" style="width:auto"> <b>D · NDA</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="4" style="width:auto"> <b>E · SLA</b><span class="small">Configurable</span></label>
+</div><div class="actions"><button class="secondary" onclick="prev()">Atrás</button><button onclick="next()">Continuar</button></div></section>
+<section class="step card" data-step="2"><h2>3. Configurar</h2>
+<label>Importe del préstamo (€)</label><input type="number" id="amount" min="0" inputmode="decimal">
+<label>Plazo (meses)</label><input type="number" id="term" min="0" max="240">
+<label>Destino / finalidad</label><textarea id="purpose" placeholder="Descripción del destino"></textarea>
+<label>Especialización / formación</label><textarea id="training" placeholder="Descripción, proveedor y proyecto específico"></textarea>
+<label>KPIs / objetivos</label><textarea id="kpis" placeholder="Métrica, objetivo, unidad y periodicidad"></textarea>
+<div class="actions"><button class="secondary" onclick="prev()">Atrás</button><button onclick="next()">Revisar</button></div></section>
+<section class="step card" data-step="3"><h2>4. Revisar</h2><div id="summary"></div>
+<div class="actions"><button class="secondary" onclick="prev()">Editar</button><button onclick="finish()">Generar vista previa</button></div></section>
+<section id="result" class="card" hidden><h2>Expediente preparado</h2><p id="resultText"></p><button onclick="window.print()">Imprimir / PDF</button></section>
+<footer>Contract Modular · interfaz experimental · © 2026</footer>
+<script>
+let step=0;
+function show(){document.querySelectorAll(".step").forEach((x,i)=>x.classList.toggle("active",i===step));document.getElementById("bar").style.width=((step+1)/4*100)+"%"}
+function next(){if(step<3)step++; if(step===3)summary();show();scrollTo({top:0,behavior:"smooth"})}
+function prev(){if(step>0)step--;show()}
+function val(id){return document.getElementById(id)?.value||""}
+function summary(){let mods=[...document.querySelectorAll("[data-module]:checked")].map(x=>x.parentElement.textContent.trim().split(" ")[0]).join(", ");document.getElementById("summary").innerHTML="<p><b>Expediente:</b> "+(val("title")||"Sin título")+"</p><p><b>Empresa:</b> "+(val("company")||"Pendiente")+"</p><p><b>Trabajador:</b> "+(val("worker")||"Pendiente")+"</p><p><b>Módulos:</b> "+mods+"</p><p><b>Préstamo:</b> "+(val("amount")||"0")+" € · "+(val("term")||"0")+" meses</p><p><b>Formación:</b> "+(val("training")||"Pendiente")+"</p>"}
+function finish(){summary();document.getElementById("resultText").textContent="Se ha preparado la vista previa de «"+(val("title")||"Sin título")+"». Los datos de esta demo permanecen en el navegador y no constituyen una firma electrónica.";document.getElementById("result").hidden=false;document.getElementById("result").scrollIntoView({behavior:"smooth"})}
+show();
+</script></main></body></html>
