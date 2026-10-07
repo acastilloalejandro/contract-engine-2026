@@ -1,0 +1,27 @@
+# Contract Engine 100
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / build
+node_modules/
+dist/
+build/
+.cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS / temporary
+*.tmp
+*.temp
