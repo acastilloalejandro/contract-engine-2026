@@ -1,0 +1,1 @@
+const fs=require("fs");const d=JSON.parse(fs.readFileSync("question-bank/worker-100.json","utf8"));if(d.count!==100||d.questions.length!==100)throw new Error("Expected exactly 100 questions");if(new Set(d.questions.map(q=>q.id)).size!==100)throw new Error("Duplicate question id");console.log("form100 ok");

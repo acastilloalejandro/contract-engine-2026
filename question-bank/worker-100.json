@@ -1,0 +1,806 @@
+{
+  "version": "2026.10.07",
+  "count": 100,
+  "questions": [
+    {
+      "id": "Q001",
+      "section": "Identidad",
+      "label": "Nombre y apellidos",
+      "fieldType": "text",
+      "inputMode": "name",
+      "required": true
+    },
+    {
+      "id": "Q002",
+      "section": "Identidad",
+      "label": "Nombre preferido",
+      "fieldType": "text",
+      "inputMode": "name",
+      "required": false
+    },
+    {
+      "id": "Q003",
+      "section": "Identidad",
+      "label": "País de nacionalidad",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": true
+    },
+    {
+      "id": "Q004",
+      "section": "Identidad",
+      "label": "Fecha de nacimiento",
+      "fieldType": "date",
+      "inputMode": "bday",
+      "required": true
+    },
+    {
+      "id": "Q005",
+      "section": "Identidad",
+      "label": "Lugar de nacimiento",
+      "fieldType": "text",
+      "inputMode": "address-level2",
+      "required": false
+    },
+    {
+      "id": "Q006",
+      "section": "Identidad",
+      "label": "Identificador principal",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q007",
+      "section": "Identidad",
+      "label": "Tipo de identificador",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q008",
+      "section": "Identidad",
+      "label": "Fecha de expedición del documento",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q009",
+      "section": "Identidad",
+      "label": "Fecha de caducidad del documento",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q010",
+      "section": "Identidad",
+      "label": "País emisor del documento",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": false
+    },
+    {
+      "id": "Q011",
+      "section": "Contacto",
+      "label": "Correo principal",
+      "fieldType": "email",
+      "inputMode": "email",
+      "required": true
+    },
+    {
+      "id": "Q012",
+      "section": "Contacto",
+      "label": "Correo alternativo",
+      "fieldType": "email",
+      "inputMode": "email",
+      "required": false
+    },
+    {
+      "id": "Q013",
+      "section": "Contacto",
+      "label": "Teléfono principal",
+      "fieldType": "tel",
+      "inputMode": "tel",
+      "required": true
+    },
+    {
+      "id": "Q014",
+      "section": "Contacto",
+      "label": "Teléfono alternativo",
+      "fieldType": "tel",
+      "inputMode": "tel",
+      "required": false
+    },
+    {
+      "id": "Q015",
+      "section": "Contacto",
+      "label": "Idioma preferido",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q016",
+      "section": "Contacto",
+      "label": "Zona horaria",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q017",
+      "section": "Contacto",
+      "label": "Dirección postal",
+      "fieldType": "text",
+      "inputMode": "street-address",
+      "required": false
+    },
+    {
+      "id": "Q018",
+      "section": "Contacto",
+      "label": "Ciudad",
+      "fieldType": "text",
+      "inputMode": "address-level2",
+      "required": false
+    },
+    {
+      "id": "Q019",
+      "section": "Contacto",
+      "label": "Código postal",
+      "fieldType": "text",
+      "inputMode": "postal-code",
+      "required": false
+    },
+    {
+      "id": "Q020",
+      "section": "Contacto",
+      "label": "País de residencia",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": true
+    },
+    {
+      "id": "Q021",
+      "section": "Organización",
+      "label": "Entidad / empresa",
+      "fieldType": "text",
+      "inputMode": "organization",
+      "required": true
+    },
+    {
+      "id": "Q022",
+      "section": "Organización",
+      "label": "Código interno",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q023",
+      "section": "Organización",
+      "label": "Área / departamento",
+      "fieldType": "text",
+      "inputMode": "organization-title",
+      "required": false
+    },
+    {
+      "id": "Q024",
+      "section": "Organización",
+      "label": "Responsable directo",
+      "fieldType": "text",
+      "inputMode": "name",
+      "required": false
+    },
+    {
+      "id": "Q025",
+      "section": "Organización",
+      "label": "Correo del responsable",
+      "fieldType": "email",
+      "inputMode": "email",
+      "required": false
+    },
+    {
+      "id": "Q026",
+      "section": "Organización",
+      "label": "Teléfono del responsable",
+      "fieldType": "tel",
+      "inputMode": "tel",
+      "required": false
+    },
+    {
+      "id": "Q027",
+      "section": "Organización",
+      "label": "Centro de trabajo",
+      "fieldType": "text",
+      "inputMode": "street-address",
+      "required": false
+    },
+    {
+      "id": "Q028",
+      "section": "Organización",
+      "label": "Ciudad del centro",
+      "fieldType": "text",
+      "inputMode": "address-level2",
+      "required": false
+    },
+    {
+      "id": "Q029",
+      "section": "Organización",
+      "label": "País del centro",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": false
+    },
+    {
+      "id": "Q030",
+      "section": "Organización",
+      "label": "Referencia externa",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q031",
+      "section": "Relación",
+      "label": "Tipo de relación",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q032",
+      "section": "Relación",
+      "label": "Función / puesto",
+      "fieldType": "text",
+      "inputMode": "organization-title",
+      "required": true
+    },
+    {
+      "id": "Q033",
+      "section": "Relación",
+      "label": "Nivel / categoría",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q034",
+      "section": "Relación",
+      "label": "Modalidad",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q035",
+      "section": "Relación",
+      "label": "Jornada",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q036",
+      "section": "Relación",
+      "label": "Fecha de inicio",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q037",
+      "section": "Relación",
+      "label": "Fecha prevista de fin",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q038",
+      "section": "Relación",
+      "label": "Estado actual",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q039",
+      "section": "Relación",
+      "label": "Ubicación de prestación",
+      "fieldType": "text",
+      "inputMode": "street-address",
+      "required": false
+    },
+    {
+      "id": "Q040",
+      "section": "Relación",
+      "label": "País de prestación",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": true
+    },
+    {
+      "id": "Q041",
+      "section": "Horario",
+      "label": "Días habituales",
+      "fieldType": "multiselect",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q042",
+      "section": "Horario",
+      "label": "Hora de inicio",
+      "fieldType": "time",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q043",
+      "section": "Horario",
+      "label": "Hora de fin",
+      "fieldType": "time",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q044",
+      "section": "Horario",
+      "label": "Pausa habitual",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q045",
+      "section": "Horario",
+      "label": "Horas semanales",
+      "fieldType": "number",
+      "inputMode": "numeric",
+      "required": false
+    },
+    {
+      "id": "Q046",
+      "section": "Horario",
+      "label": "Turnos",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q047",
+      "section": "Horario",
+      "label": "Trabajo nocturno",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q048",
+      "section": "Horario",
+      "label": "Trabajo en festivos",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q049",
+      "section": "Horario",
+      "label": "Disponibilidad extraordinaria",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q050",
+      "section": "Horario",
+      "label": "Observaciones de horario",
+      "fieldType": "textarea",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q051",
+      "section": "Compensación",
+      "label": "Existe remuneración",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q052",
+      "section": "Compensación",
+      "label": "Importe",
+      "fieldType": "currency",
+      "inputMode": "decimal",
+      "required": false
+    },
+    {
+      "id": "Q053",
+      "section": "Compensación",
+      "label": "Moneda",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q054",
+      "section": "Compensación",
+      "label": "Periodicidad de pago",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q055",
+      "section": "Compensación",
+      "label": "Día habitual de pago",
+      "fieldType": "number",
+      "inputMode": "numeric",
+      "required": false
+    },
+    {
+      "id": "Q056",
+      "section": "Compensación",
+      "label": "Complementos",
+      "fieldType": "currency",
+      "inputMode": "decimal",
+      "required": false
+    },
+    {
+      "id": "Q057",
+      "section": "Compensación",
+      "label": "Dietas",
+      "fieldType": "currency",
+      "inputMode": "decimal",
+      "required": false
+    },
+    {
+      "id": "Q058",
+      "section": "Compensación",
+      "label": "Horas extra",
+      "fieldType": "currency",
+      "inputMode": "decimal",
+      "required": false
+    },
+    {
+      "id": "Q059",
+      "section": "Compensación",
+      "label": "Método de pago",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q060",
+      "section": "Compensación",
+      "label": "Referencia de nómina / pago",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q061",
+      "section": "Documentación",
+      "label": "Documentación principal",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q062",
+      "section": "Documentación",
+      "label": "Estado documental",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q063",
+      "section": "Documentación",
+      "label": "Documento pendiente",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q064",
+      "section": "Documentación",
+      "label": "Número de documentos",
+      "fieldType": "number",
+      "inputMode": "numeric",
+      "required": false
+    },
+    {
+      "id": "Q065",
+      "section": "Documentación",
+      "label": "Documento principal adjunto",
+      "fieldType": "file",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q066",
+      "section": "Documentación",
+      "label": "Fecha de verificación",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q067",
+      "section": "Documentación",
+      "label": "Caducidad documental relevante",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q068",
+      "section": "Documentación",
+      "label": "Observación documental",
+      "fieldType": "textarea",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q069",
+      "section": "Documentación",
+      "label": "NDA requerido",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q070",
+      "section": "Documentación",
+      "label": "SLA requerido",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q071",
+      "section": "Movilidad",
+      "label": "Prestación internacional",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q072",
+      "section": "Movilidad",
+      "label": "País adicional de prestación",
+      "fieldType": "country",
+      "inputMode": "country",
+      "required": false
+    },
+    {
+      "id": "Q073",
+      "section": "Movilidad",
+      "label": "Autorización de trabajo",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q074",
+      "section": "Movilidad",
+      "label": "Movilidad geográfica",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q075",
+      "section": "Movilidad",
+      "label": "Viaje habitual",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q076",
+      "section": "Movilidad",
+      "label": "Frecuencia de viaje",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q077",
+      "section": "Movilidad",
+      "label": "Alojamiento asociado",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q078",
+      "section": "Movilidad",
+      "label": "Tipo de alojamiento",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q079",
+      "section": "Movilidad",
+      "label": "Transporte asociado",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q080",
+      "section": "Movilidad",
+      "label": "Observaciones de movilidad",
+      "fieldType": "textarea",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q081",
+      "section": "Seguridad",
+      "label": "Contacto de emergencia",
+      "fieldType": "name",
+      "inputMode": "name",
+      "required": false
+    },
+    {
+      "id": "Q082",
+      "section": "Seguridad",
+      "label": "Teléfono de emergencia",
+      "fieldType": "tel",
+      "inputMode": "tel",
+      "required": false
+    },
+    {
+      "id": "Q083",
+      "section": "Seguridad",
+      "label": "Relación del contacto",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q084",
+      "section": "Seguridad",
+      "label": "Formación obligatoria",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q085",
+      "section": "Seguridad",
+      "label": "Formación completada",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q086",
+      "section": "Seguridad",
+      "label": "Credencial / permiso requerido",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q087",
+      "section": "Seguridad",
+      "label": "Estado de acceso",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q088",
+      "section": "Seguridad",
+      "label": "Equipamiento asignado",
+      "fieldType": "multiselect",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q089",
+      "section": "Seguridad",
+      "label": "Incidencias administrativas abiertas",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q090",
+      "section": "Seguridad",
+      "label": "Observaciones de seguridad",
+      "fieldType": "textarea",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q091",
+      "section": "Consentimiento",
+      "label": "Consentimiento para tratamiento de datos",
+      "fieldType": "checkbox",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q092",
+      "section": "Consentimiento",
+      "label": "Consentimiento para comunicaciones operativas",
+      "fieldType": "checkbox",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q093",
+      "section": "Consentimiento",
+      "label": "Consentimiento para verificación documental",
+      "fieldType": "checkbox",
+      "inputMode": "off",
+      "required": false
+    },
+    {
+      "id": "Q094",
+      "section": "Consentimiento",
+      "label": "Aceptación de condiciones",
+      "fieldType": "checkbox",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q095",
+      "section": "Consentimiento",
+      "label": "Fecha de aceptación",
+      "fieldType": "date",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q096",
+      "section": "Consentimiento",
+      "label": "Versión aceptada",
+      "fieldType": "text",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q097",
+      "section": "Consentimiento",
+      "label": "Método de autenticación",
+      "fieldType": "select",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q098",
+      "section": "Consentimiento",
+      "label": "Identidad autenticada",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q099",
+      "section": "Consentimiento",
+      "label": "Firma pendiente",
+      "fieldType": "boolean",
+      "inputMode": "off",
+      "required": true
+    },
+    {
+      "id": "Q100",
+      "section": "Consentimiento",
+      "label": "Observaciones finales",
+      "fieldType": "textarea",
+      "inputMode": "off",
+      "required": false
+    }
+  ]
+}

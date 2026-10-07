@@ -1,0 +1,618 @@
+{
+  "version": "2026.10.07",
+  "questionCount": 100,
+  "sections": [
+    "Identidad",
+    "Contacto",
+    "Organización",
+    "Relación",
+    "Horario",
+    "Compensación",
+    "Documentación",
+    "Movilidad",
+    "Seguridad",
+    "Consentimiento"
+  ],
+  "questions": [
+    {
+      "id": "Q001",
+      "label": "Nombre y apellidos",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "Q002",
+      "label": "Nombre preferido",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q003",
+      "label": "País de nacionalidad",
+      "type": "country",
+      "required": true
+    },
+    {
+      "id": "Q004",
+      "label": "Fecha de nacimiento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q005",
+      "label": "Lugar de nacimiento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q006",
+      "label": "Identificador principal",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "Q007",
+      "label": "Tipo de identificador",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q008",
+      "label": "Fecha de expedición del documento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q009",
+      "label": "Fecha de caducidad del documento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q010",
+      "label": "País emisor del documento",
+      "type": "country",
+      "required": false
+    },
+    {
+      "id": "Q011",
+      "label": "Correo principal",
+      "type": "email",
+      "required": true
+    },
+    {
+      "id": "Q012",
+      "label": "Correo alternativo",
+      "type": "email",
+      "required": false
+    },
+    {
+      "id": "Q013",
+      "label": "Teléfono principal",
+      "type": "tel",
+      "required": true
+    },
+    {
+      "id": "Q014",
+      "label": "Teléfono alternativo",
+      "type": "tel",
+      "required": false
+    },
+    {
+      "id": "Q015",
+      "label": "Idioma preferido",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q016",
+      "label": "Zona horaria",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q017",
+      "label": "Dirección postal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q018",
+      "label": "Ciudad",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q019",
+      "label": "Código postal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q020",
+      "label": "País de residencia",
+      "type": "country",
+      "required": true
+    },
+    {
+      "id": "Q021",
+      "label": "Entidad / empresa",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "Q022",
+      "label": "Código interno",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q023",
+      "label": "Área / departamento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q024",
+      "label": "Responsable directo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q025",
+      "label": "Correo del responsable",
+      "type": "email",
+      "required": false
+    },
+    {
+      "id": "Q026",
+      "label": "Teléfono del responsable",
+      "type": "tel",
+      "required": false
+    },
+    {
+      "id": "Q027",
+      "label": "Centro de trabajo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q028",
+      "label": "Ciudad del centro",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q029",
+      "label": "País del centro",
+      "type": "country",
+      "required": false
+    },
+    {
+      "id": "Q030",
+      "label": "Referencia externa",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q031",
+      "label": "Tipo de relación",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q032",
+      "label": "Función / puesto",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "Q033",
+      "label": "Nivel / categoría",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q034",
+      "label": "Modalidad",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q035",
+      "label": "Jornada",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q036",
+      "label": "Fecha de inicio",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q037",
+      "label": "Fecha prevista de fin",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q038",
+      "label": "Estado actual",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q039",
+      "label": "Ubicación de prestación",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q040",
+      "label": "País de prestación",
+      "type": "country",
+      "required": true
+    },
+    {
+      "id": "Q041",
+      "label": "Días habituales",
+      "type": "multiselect",
+      "required": false
+    },
+    {
+      "id": "Q042",
+      "label": "Hora de inicio",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "Q043",
+      "label": "Hora de fin",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "Q044",
+      "label": "Pausa habitual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q045",
+      "label": "Horas semanales",
+      "type": "number",
+      "required": false
+    },
+    {
+      "id": "Q046",
+      "label": "Turnos",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q047",
+      "label": "Trabajo nocturno",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q048",
+      "label": "Trabajo en festivos",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q049",
+      "label": "Disponibilidad extraordinaria",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q050",
+      "label": "Observaciones de horario",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q051",
+      "label": "Existe remuneración",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q052",
+      "label": "Importe",
+      "type": "currency",
+      "required": false
+    },
+    {
+      "id": "Q053",
+      "label": "Moneda",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q054",
+      "label": "Periodicidad de pago",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q055",
+      "label": "Día habitual de pago",
+      "type": "number",
+      "required": false
+    },
+    {
+      "id": "Q056",
+      "label": "Complementos",
+      "type": "currency",
+      "required": false
+    },
+    {
+      "id": "Q057",
+      "label": "Dietas",
+      "type": "currency",
+      "required": false
+    },
+    {
+      "id": "Q058",
+      "label": "Horas extra",
+      "type": "currency",
+      "required": false
+    },
+    {
+      "id": "Q059",
+      "label": "Método de pago",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q060",
+      "label": "Referencia de nómina / pago",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q061",
+      "label": "Documentación principal",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q062",
+      "label": "Estado documental",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q063",
+      "label": "Documento pendiente",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q064",
+      "label": "Número de documentos",
+      "type": "number",
+      "required": false
+    },
+    {
+      "id": "Q065",
+      "label": "Documento principal adjunto",
+      "type": "file",
+      "required": false
+    },
+    {
+      "id": "Q066",
+      "label": "Fecha de verificación",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q067",
+      "label": "Caducidad documental relevante",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q068",
+      "label": "Observación documental",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q069",
+      "label": "NDA requerido",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q070",
+      "label": "SLA requerido",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q071",
+      "label": "Prestación internacional",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q072",
+      "label": "País adicional de prestación",
+      "type": "country",
+      "required": false
+    },
+    {
+      "id": "Q073",
+      "label": "Autorización de trabajo",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q074",
+      "label": "Movilidad geográfica",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q075",
+      "label": "Viaje habitual",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q076",
+      "label": "Frecuencia de viaje",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q077",
+      "label": "Alojamiento asociado",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q078",
+      "label": "Tipo de alojamiento",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q079",
+      "label": "Transporte asociado",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q080",
+      "label": "Observaciones de movilidad",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q081",
+      "label": "Contacto de emergencia",
+      "type": "name",
+      "required": false
+    },
+    {
+      "id": "Q082",
+      "label": "Teléfono de emergencia",
+      "type": "tel",
+      "required": false
+    },
+    {
+      "id": "Q083",
+      "label": "Relación del contacto",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q084",
+      "label": "Formación obligatoria",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q085",
+      "label": "Formación completada",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "Q086",
+      "label": "Credencial / permiso requerido",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "Q087",
+      "label": "Estado de acceso",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "Q088",
+      "label": "Equipamiento asignado",
+      "type": "multiselect",
+      "required": false
+    },
+    {
+      "id": "Q089",
+      "label": "Incidencias administrativas abiertas",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "id": "Q090",
+      "label": "Observaciones de seguridad",
+      "type": "textarea",
+      "required": false
+    },
+    {
+      "id": "Q091",
+      "label": "Consentimiento para tratamiento de datos",
+      "type": "checkbox",
+      "required": true
+    },
+    {
+      "id": "Q092",
+      "label": "Consentimiento para comunicaciones operativas",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "id": "Q093",
+      "label": "Consentimiento para verificación documental",
+      "type": "checkbox",
+      "required": false
+    },
+    {
+      "id": "Q094",
+      "label": "Aceptación de condiciones",
+      "type": "checkbox",
+      "required": true
+    },
+    {
+      "id": "Q095",
+      "label": "Fecha de aceptación",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "Q096",
+      "label": "Versión aceptada",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "Q097",
+      "label": "Método de autenticación",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "Q098",
+      "label": "Identidad autenticada",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q099",
+      "label": "Firma pendiente",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "id": "Q100",
+      "label": "Observaciones finales",
+      "type": "textarea",
+      "required": false
+    }
+  ]
+}

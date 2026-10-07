@@ -1,0 +1,59 @@
+{
+  "version": "2026.10.07",
+  "rules": {
+    "email": {
+      "type": "email",
+      "inputmode": "email",
+      "autocomplete": "email"
+    },
+    "tel": {
+      "type": "tel",
+      "inputmode": "tel",
+      "autocomplete": "tel"
+    },
+    "name": {
+      "type": "text",
+      "inputmode": "text",
+      "autocomplete": "name"
+    },
+    "country": {
+      "type": "text",
+      "inputmode": "text",
+      "autocomplete": "country"
+    },
+    "street-address": {
+      "type": "text",
+      "inputmode": "text",
+      "autocomplete": "street-address"
+    },
+    "postal-code": {
+      "type": "text",
+      "inputmode": "text",
+      "autocomplete": "postal-code"
+    },
+    "organization": {
+      "type": "text",
+      "inputmode": "text",
+      "autocomplete": "organization"
+    },
+    "organization-title": {
+      "type": "text",
+      "inputmode": "text"
+    },
+    "numeric": {
+      "type": "number",
+      "inputmode": "numeric"
+    },
+    "decimal": {
+      "type": "number",
+      "inputmode": "decimal"
+    },
+    "bday": {
+      "type": "date",
+      "autocomplete": "bday"
+    },
+    "off": {
+      "type": "text"
+    }
+  }
+}
