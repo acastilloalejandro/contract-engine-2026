@@ -1,0 +1,20 @@
+name: Quality
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate schema JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('schema/contract-record.schema.json','utf8')); console.log('schema ok')"
+      - name: Validate HTML shell
+        run: node - <<'NODE'
+const fs=require('fs');
+const h=fs.readFileSync('index.html','utf8');
+for(const token of ['<!DOCTYPE html>','id="progressBar"','id="nextBtn"','id="generateBtn"']) if(!h.includes(token)) throw new Error('Missing '+token);
+console.log('html shell ok');
+NODE
