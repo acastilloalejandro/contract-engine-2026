@@ -195,6 +195,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Contract Modular";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Protege tus expedientes contractuales mediante autenticación biométrica.";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alejandro.contractmodular";
 				PRODUCT_NAME = "$(TARGET_NAME)";
