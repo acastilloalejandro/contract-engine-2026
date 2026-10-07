@@ -7,9 +7,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate schema
         run: node -e "JSON.parse(require('fs').readFileSync('schema/contract-record.schema.json','utf8')); console.log('schema ok')"
-      - name: Validate HTML
-        run: node -e "const fs=require('fs'); for (const f of ['index.html','docs/index.html']) { const h=fs.readFileSync(f,'utf8'); if(!/^<!doctype html>/i.test(h)) throw Error(f+' missing doctype'); console.log(f+' ok'); }"
-      - name: Validate JavaScript
-        run: for f in js/*.js; do node --check "$f"; done
+      - name: Validate HTML and local assets
+        run: node -e "const fs=require('fs'); for (const f of ['index.html','docs/index.html']) { const h=fs.readFileSync(f,'utf8'); if(!/^<!doctype html>/i.test(h)) throw Error(f+' missing doctype'); if(f==='index.html' && (h.includes('href=\"css/') || h.includes('src=\"js/'))) throw Error('index.html contains missing legacy local assets'); console.log(f+' ok'); }"
       - name: Validate iOS files
         run: test -f ios/ContractModular.xcodeproj/project.pbxproj && for f in ContractModularApp.swift Models.swift AppStore.swift DesignSystem.swift DocumentServices.swift AdvancedViews.swift; do test -f "ios/ContractModular/$f"; done
