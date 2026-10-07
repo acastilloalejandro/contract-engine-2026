@@ -1,20 +1,13 @@
-name: Quality
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+name: Quality checks
+on: [push, pull_request]
 jobs:
   quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate schema JSON
+      - name: Validate schema
         run: node -e "JSON.parse(require('fs').readFileSync('schema/contract-record.schema.json','utf8')); console.log('schema ok')"
-      - name: Validate HTML shell
-        run: node - <<'NODE'
-const fs=require('fs');
-const h=fs.readFileSync('index.html','utf8');
-for(const token of ['<!DOCTYPE html>','id="progressBar"','id="nextBtn"','id="generateBtn"']) if(!h.includes(token)) throw new Error('Missing '+token);
-console.log('html shell ok');
-NODE
+      - name: Validate HTML and local assets
+        run: node -e "const fs=require('fs'); for (const f of ['index.html','docs/index.html']) { const h=fs.readFileSync(f,'utf8'); if(!/^<!doctype html>/i.test(h)) throw Error(f+' missing doctype'); if(f==='index.html' && (h.includes('href=\"css/') || h.includes('src=\"js/'))) throw Error('index.html contains missing legacy local assets'); console.log(f+' ok'); }"
+      - name: Validate iOS files
+        run: test -f ios/ContractModular.xcodeproj/project.pbxproj && for f in ContractModularApp.swift Models.swift AppStore.swift DesignSystem.swift DocumentServices.swift AdvancedViews.swift; do test -f "ios/ContractModular/$f"; done

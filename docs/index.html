@@ -1,54 +1,78 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f5f7">
-<title>Contract Modular</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f5f7"><meta name="description" content="Contract Modular · previsualización responsive">
+<title>Contract Modular · Preview</title>
 <style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;color:#111; background:#f5f5f7}
-*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:auto;padding:24px 18px 48px}
-header{padding:34px 4px 20px}h1{font-size:38px;letter-spacing:-1.5px;margin:0 0 8px}p{color:#6e6e73;line-height:1.45}
-.card{background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.07);border-radius:24px;padding:20px;margin:14px 0;box-shadow:0 8px 30px rgba(0,0,0,.05);backdrop-filter:blur(20px)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.module{padding:16px;border-radius:18px;background:#f2f2f7}.module b{display:block;margin-bottom:5px}
-label{display:block;font-weight:600;margin:14px 0 7px}input,select,textarea{width:100%;font:inherit;padding:13px 14px;border:1px solid #d1d1d6;border-radius:14px;background:#fff}textarea{min-height:90px}
-button{border:0;border-radius:999px;padding:13px 18px;font-weight:650;font-size:16px;background:#111;color:white}button.secondary{background:#e5e5ea;color:#111}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.progress{height:8px;background:#e5e5ea;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:20%;background:#007aff}
-.small{font-size:13px}.step{display:none}.step.active{display:block}
-footer{font-size:12px;color:#8e8e93;text-align:center;margin-top:30px}
+:root{color-scheme:light dark;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;--bg:#f5f5f7;--card:rgba(255,255,255,.78);--text:#1d1d1f;--muted:#6e6e73;--line:rgba(0,0,0,.08);--accent:#007aff;--soft:#e9e9ee}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:rgba(28,28,30,.78);--text:#f5f5f7;--muted:#98989d;--line:rgba(255,255,255,.12);--soft:#1c1c1e}}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#fff 0,var(--bg) 38%);color:var(--text);min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1180px,100%);margin:auto;padding:18px 18px 110px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 22px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--text);color:var(--bg);font-weight:800}.eyebrow{font-size:11px;letter-spacing:.12em;font-weight:750;color:var(--muted)}h1{font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.045em;margin:8px 0 12px}h2{margin:0 0 8px;font-size:26px;letter-spacing:-.025em}p{color:var(--muted);line-height:1.5;margin:6px 0}.status{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);backdrop-filter:blur(20px);font-size:12px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.sidebar,.card{border:1px solid var(--line);background:var(--card);backdrop-filter:blur(28px);box-shadow:0 16px 45px rgba(0,0,0,.06);border-radius:26px}.sidebar{padding:10px;height:max-content;position:sticky;top:16px}.nav{width:100%;border:0;background:transparent;color:var(--text);text-align:left;padding:12px 14px;border-radius:14px}.nav.active,.nav:hover{background:var(--soft)}.content{min-width:0}.card{padding:22px;margin-bottom:16px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:18px;border-radius:20px;background:var(--soft)}.metric b{font-size:28px;display:block;margin-top:5px}
+.progress{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent);border-radius:inherit;transition:width .3s}.actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px}
+.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:700}.primary{background:var(--text);color:var(--bg)}.secondary{background:var(--soft);color:var(--text)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.screen{display:none}.screen.active{display:block}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field span{font-size:13px;font-weight:650}.field small{color:var(--muted)}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:rgba(127,127,127,.08);color:var(--text);outline:none}textarea{min-height:110px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.module{display:flex;gap:12px;padding:16px;border:1px solid var(--line);border-radius:18px}.module input{width:auto}.module strong{display:block}.module small{color:var(--muted)}
+.summary{display:grid;gap:9px}.row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.badge{display:inline-flex;padding:5px 9px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);font-size:12px;font-weight:700}
+.bottom{display:none}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#1d1d1f;color:#fff;padding:11px 15px;border-radius:999px;font-size:13px;transition:.25s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.shell{padding:12px 12px 92px}.layout{display:block}.sidebar{display:none}.metrics{grid-template-columns:1fr}.form-grid,.modules{grid-template-columns:1fr}.top{padding-bottom:14px}.bottom{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;left:10px;right:10px;bottom:10px;padding:7px;background:var(--card);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(24px);box-shadow:0 12px 40px rgba(0,0,0,.15);z-index:5}.bottom button{border:0;background:transparent;color:var(--muted);padding:9px 4px;font-size:11px}.bottom button.active{color:var(--text);font-weight:750}.card{border-radius:22px;padding:18px}}
 </style>
 </head>
-<body><main>
-<header><div class="small">CONTRACT MODULAR · PREVIEW</div><h1>Crear expediente</h1><p>Formulario modular responsive para preparar y revisar un expediente contractual. Demo técnica, no asesoramiento jurídico.</p></header>
-<div class="card"><div class="progress"><i id="bar"></i></div><div id="steps"></div></div>
-<section class="step active card" data-step="0"><h2>1. Identificar</h2>
-<label>Nombre del expediente</label><input id="title" placeholder="Ej. Expediente contractual 2026">
-<label>Empresa</label><input id="company" placeholder="Razón social / nombre">
-<label>Trabajador</label><input id="worker" placeholder="Nombre y apellidos">
-<label>Documento</label><input id="doc" placeholder="DNI/NIE/NIF">
-<div class="actions"><button onclick="next()">Continuar</button></div></section>
-<section class="step card" data-step="1"><h2>2. Seleccionar módulos</h2><p>Activar únicamente los módulos que deban formar parte del expediente.</p>
-<div class="grid">
-<label class="module"><input type="checkbox" checked data-module="0" style="width:auto"> <b>A · Préstamo</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="1" style="width:auto"> <b>B · Aval</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="2" style="width:auto"> <b>C · Permanencia</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="3" style="width:auto"> <b>D · NDA</b><span class="small">Configurable</span></label><label class="module"><input type="checkbox" checked data-module="4" style="width:auto"> <b>E · SLA</b><span class="small">Configurable</span></label>
-</div><div class="actions"><button class="secondary" onclick="prev()">Atrás</button><button onclick="next()">Continuar</button></div></section>
-<section class="step card" data-step="2"><h2>3. Configurar</h2>
-<label>Importe del préstamo (€)</label><input type="number" id="amount" min="0" inputmode="decimal">
-<label>Plazo (meses)</label><input type="number" id="term" min="0" max="240">
-<label>Destino / finalidad</label><textarea id="purpose" placeholder="Descripción del destino"></textarea>
-<label>Especialización / formación</label><textarea id="training" placeholder="Descripción, proveedor y proyecto específico"></textarea>
-<label>KPIs / objetivos</label><textarea id="kpis" placeholder="Métrica, objetivo, unidad y periodicidad"></textarea>
-<div class="actions"><button class="secondary" onclick="prev()">Atrás</button><button onclick="next()">Revisar</button></div></section>
-<section class="step card" data-step="3"><h2>4. Revisar</h2><div id="summary"></div>
-<div class="actions"><button class="secondary" onclick="prev()">Editar</button><button onclick="finish()">Generar vista previa</button></div></section>
-<section id="result" class="card" hidden><h2>Expediente preparado</h2><p id="resultText"></p><button onclick="window.print()">Imprimir / PDF</button></section>
-<footer>Contract Modular · interfaz experimental · © 2026</footer>
+<body><div class="shell">
+<header class="top"><div class="brand"><div class="mark">CM</div><div><div class="eyebrow">CONTRACT MODULAR</div><strong>Preview responsive</strong></div></div><div class="status">Demo local · 2026</div></header>
+<div class="layout"><aside class="sidebar" aria-label="Navegación">
+<button class="nav active" data-go="home">Inicio</button><button class="nav" data-go="cases">Expedientes</button><button class="nav" data-go="new">Nuevo expediente</button><button class="nav" data-go="settings">Ajustes</button>
+</aside>
+<main class="content">
+<section class="screen active" id="home"><div class="card"><div class="eyebrow">INFINITIVO + FORMA ÁUREA</div><h1>Registrar.<br>Validar.<br>Verificar.</h1><p>Previsualización web del flujo de la aplicación SwiftUI: navegación adaptativa, formulario modular, revisión y documento.</p><div class="actions"><button class="btn primary" data-go="new">Nuevo expediente</button><button class="btn secondary" data-go="cases">Ver expedientes</button></div></div>
+<div class="metrics"><div class="metric"><span class="eyebrow">EXPEDIENTES</span><b id="metricCases">1</b></div><div class="metric"><span class="eyebrow">MÓDULOS</span><b>5</b></div><div class="metric"><span class="eyebrow">ESTADO</span><b>Demo</b></div></div></section>
+<section class="screen" id="cases"><div class="card"><div class="eyebrow">EXPEDIENTES</div><h2>Panel de expedientes</h2><p>La versión nativa usa navegación dividida en iPad y navegación apilada en iPhone.</p><div class="card" style="margin-top:14px;background:var(--soft);box-shadow:none"><strong>Expediente demo · Contrato modular</strong><p>En revisión · 82% completo</p><button class="btn secondary" data-go="new">Editar flujo</button></div></div></section>
+<section class="screen" id="new"><div class="card"><div class="eyebrow">NUEVO EXPEDIENTE</div><h2 id="stepTitle">1. Identificar</h2><p id="stepHint">Define la identidad y la organización del expediente.</p><div class="progress" style="margin:18px 0"><i id="bar" style="width:25%"></i></div>
+<div class="screen active" data-step="0"><div class="form-grid">
+<label class="field"><span>Nombre del expediente</span><input id="title" required placeholder="Expediente contractual 2026"></label>
+<label class="field"><span>Empresa</span><input id="company" required placeholder="Razón social"></label>
+<label class="field"><span>Trabajador</span><input id="worker" required placeholder="Nombre y apellidos"></label>
+<label class="field"><span>Identificador</span><input id="identifier" placeholder="DNI/NIE/NIF"></label>
+</div></div>
+<div class="screen" data-step="1"><div class="modules">
+<label class="module"><input type="checkbox" checked data-module="A"><span><strong>A · Préstamo</strong><small>Préstamo contractual</small></span></label>
+<label class="module"><input type="checkbox" checked data-module="B"><span><strong>B · Aval</strong><small>Garantía personal</small></span></label>
+<label class="module"><input type="checkbox" checked data-module="C"><span><strong>C · Permanencia</strong><small>Especialización profesional</small></span></label>
+<label class="module"><input type="checkbox" checked data-module="D"><span><strong>D · NDA</strong><small>Confidencialidad</small></span></label>
+<label class="module"><input type="checkbox" checked data-module="E"><span><strong>E · SLA</strong><small>KPIs y calidad</small></span></label>
+</div></div>
+<div class="screen" data-step="2"><div class="form-grid">
+<label class="field"><span>Importe préstamo (€)</span><input id="amount" type="number" min="0" inputmode="decimal"></label>
+<label class="field"><span>Plazo (meses)</span><input id="term" type="number" min="0" max="240"></label>
+<label class="field full"><span>Finalidad</span><textarea id="purpose"></textarea></label>
+<label class="field full"><span>Formación / especialización</span><textarea id="training"></textarea></label>
+<label class="field full"><span>KPIs / objetivos</span><textarea id="kpis"></textarea></label>
+</div></div>
+<div class="screen" data-step="3"><div id="summary" class="summary"></div><div class="actions"><button class="btn secondary" id="editBtn">Editar</button><button class="btn primary" id="finishBtn">Generar vista previa</button></div></div>
+<div class="actions"><button class="btn secondary" id="back" disabled>Atrás</button><button class="btn primary" id="next">Continuar</button></div></div>
+<div class="card" id="result" hidden><span class="badge">PREPARADO</span><h2>Vista previa generada</h2><p id="resultText"></p><div class="actions"><button class="btn primary" onclick="window.print()">Imprimir / PDF</button><button class="btn secondary" data-go="home">Volver al inicio</button></div></div>
+</section>
+<section class="screen" id="settings"><div class="card"><div class="eyebrow">AJUSTES</div><h2>Interfaz y seguridad</h2><p>La app nativa usa SwiftUI, materiales del sistema, Face ID/biometría y exportación PDF. La demo web no suplanta esas capacidades nativas.</p><div class="row"><span>Responsive</span><strong>iPhone · iPad · Web</strong></div><div class="row"><span>Persistencia demo</span><strong>localStorage</strong></div><div class="row"><span>Firma</span><strong>Referencia, no firma jurídica</strong></div></div></section>
+</main></div>
+<nav class="bottom" aria-label="Navegación móvil"><button class="active" data-go="home">Inicio</button><button data-go="cases">Expedientes</button><button data-go="new">Nuevo</button><button data-go="settings">Ajustes</button></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div></div>
 <script>
-let step=0;
-function show(){document.querySelectorAll(".step").forEach((x,i)=>x.classList.toggle("active",i===step));document.getElementById("bar").style.width=((step+1)/4*100)+"%"}
-function next(){if(step<3)step++; if(step===3)summary();show();scrollTo({top:0,behavior:"smooth"})}
-function prev(){if(step>0)step--;show()}
-function val(id){return document.getElementById(id)?.value||""}
-function summary(){let mods=[...document.querySelectorAll("[data-module]:checked")].map(x=>x.parentElement.textContent.trim().split(" ")[0]).join(", ");document.getElementById("summary").innerHTML="<p><b>Expediente:</b> "+(val("title")||"Sin título")+"</p><p><b>Empresa:</b> "+(val("company")||"Pendiente")+"</p><p><b>Trabajador:</b> "+(val("worker")||"Pendiente")+"</p><p><b>Módulos:</b> "+mods+"</p><p><b>Préstamo:</b> "+(val("amount")||"0")+" € · "+(val("term")||"0")+" meses</p><p><b>Formación:</b> "+(val("training")||"Pendiente")+"</p>"}
-function finish(){summary();document.getElementById("resultText").textContent="Se ha preparado la vista previa de «"+(val("title")||"Sin título")+"». Los datos de esta demo permanecen en el navegador y no constituyen una firma electrónica.";document.getElementById("result").hidden=false;document.getElementById("result").scrollIntoView({behavior:"smooth"})}
-show();
-</script></main></body></html>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];let screen="home",step=0;
+const steps=[["1. Identificar","Define la identidad y la organización del expediente."],["2. Módulos","Activa los módulos que forman parte del expediente."],["3. Configurar","Introduce los parámetros operativos."],["4. Revisar","Comprueba los datos antes de generar."]];
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1800)}
+function go(name){screen=name;$$(".content>.screen").forEach(e=>e.classList.toggle("active",e.id===name));$$(".nav").forEach(e=>e.classList.toggle("active",e.dataset.go===name));$$(".bottom button").forEach(e=>e.classList.toggle("active",e.dataset.go===name));if(name==="new")renderStep();scrollTo({top:0,behavior:"smooth"})}
+$$("[data-go]").forEach(e=>e.addEventListener("click",()=>go(e.dataset.go)));
+function renderStep(){$$("#new [data-step]").forEach((e,i)=>e.classList.toggle("active",i===step));$("#stepTitle").textContent=steps[step][0];$("#stepHint").textContent=steps[step][1];$("#bar").style.width=((step+1)/4*100)+"%";$("#back").disabled=step===0;$("#next").hidden=step===3}
+function value(id){return ($("#"+id)?.value||"").trim()}
+function summary(){const mods=$$("[data-module]:checked").map(e=>e.dataset.module).join(", ");const data=[["Expediente",value("title")||"Sin título"],["Empresa",value("company")||"Pendiente"],["Trabajador",value("worker")||"Pendiente"],["Módulos",mods||"Ninguno"],["Préstamo",(value("amount")||"0")+" € · "+(value("term")||"0")+" meses"],["Finalidad",value("purpose")||"Pendiente"],["Formación",value("training")||"Pendiente"],["KPIs",value("kpis")||"Pendiente"]];$("#summary").innerHTML=data.map(x=>"<div class=\"row\"><span>"+x[0]+"</span><strong>"+String(x[1]).replaceAll("<","&lt;")+"</strong></div>").join("")}
+$("#next").addEventListener("click",()=>{if(step===0&&!value("title")){toast("Introduce un nombre de expediente");return}if(step<3)step++;if(step===3)summary();renderStep()});
+$("#back").addEventListener("click",()=>{if(step>0)step--;renderStep()});$("#editBtn").addEventListener("click",()=>{step=0;renderStep()});
+$("#finishBtn").addEventListener("click",()=>{$("#result").hidden=false;$("#resultText").textContent="Se ha preparado «"+(value("title")||"Sin título")+"». Esta demo no crea una firma electrónica ni certifica validez jurídica.";toast("Vista previa preparada")});
+const keys=["title","company","worker","identifier","amount","term","purpose","training","kpis"];const saved=localStorage.getItem("contract-modular-preview");if(saved){try{const d=JSON.parse(saved);keys.forEach(k=>{if($("#"+k)&&d[k]!=null)$("#"+k).value=d[k]})}catch{}}
+keys.forEach(id=>$("#"+id)?.addEventListener("input",()=>{const d={};keys.forEach(k=>d[k]=$("#"+k)?.value||"");localStorage.setItem("contract-modular-preview",JSON.stringify(d))}));renderStep();
+</script>
+</body></html>
