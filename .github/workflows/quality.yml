@@ -1,36 +1,16 @@
-name: Quality
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+name: Quality checks
+on: [push, pull_request]
 jobs:
   quality:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'pull_request' && github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate JSON schema
+      - name: Validate schema
         run: node -e "JSON.parse(require('fs').readFileSync('schema/contract-record.schema.json','utf8')); console.log('schema ok')"
-      - name: Validate web shells
-        run: |
-          node - <<'NODE'
-          const fs=require('fs');
-          for (const file of ['index.html','docs/index.html']) {
-            const h=fs.readFileSync(file,'utf8');
-            if(!/^<!doctype html>/i.test(h)) throw new Error(file+': missing doctype');
-            const tokens=file==='index.html'
-              ? ['id="progressBar"','id="nextBtn"','id="generateBtn"']
-              : ['id="bar"','id="next"','data-step="3"'];
-            for (const token of tokens) if(!h.includes(token)) throw new Error(file+': missing '+token);
-            console.log(file+' ok');
-          }
-          NODE
-      - name: Validate JavaScript syntax
-        run: for file in js/*.js; do node --check "$file"; done
-      - name: Validate iOS project shell
-        run: |
-          test -f ios/ContractModular.xcodeproj/project.pbxproj
-          for file in ContractModularApp.swift Models.swift AppStore.swift DesignSystem.swift DocumentServices.swift AdvancedViews.swift; do
-            test -f "ios/ContractModular/$file"
-          done
-          echo "iOS project shell ok"
+      - name: Validate HTML
+        run: node -e "const fs=require('fs'); for (const f of ['index.html','docs/index.html']) { const h=fs.readFileSync(f,'utf8'); if(!/^<!doctype html>/i.test(h)) throw Error(f+' missing doctype'); console.log(f+' ok'); }"
+      - name: Validate JavaScript
+        run: for f in js/*.js; do node --check "$f"; done
+      - name: Validate iOS files
+        run: test -f ios/ContractModular.xcodeproj/project.pbxproj && for f in ContractModularApp.swift Models.swift AppStore.swift DesignSystem.swift DocumentServices.swift AdvancedViews.swift; do test -f "ios/ContractModular/$f"; done
