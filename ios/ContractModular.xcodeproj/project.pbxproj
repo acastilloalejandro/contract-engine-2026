@@ -191,9 +191,7 @@
 		};
 		A10000000000000000000072 /* Debug target */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CURRENT_PROJECT_VERSION = 1;
+			buildSettings = {				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Contract Modular";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -208,9 +206,7 @@
 		};
 		A10000000000000000000073 /* Release target */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CURRENT_PROJECT_VERSION = 1;
+			buildSettings = {				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Contract Modular";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
