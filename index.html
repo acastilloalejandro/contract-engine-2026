@@ -1,1682 +1,506 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
+  >
+
   <meta
     name="description"
-    content="Contract Engine 2026 — formulario inteligente, validación, registro y certificado verificable."
-  />
-  <meta name="theme-color" content="#0b0b0f" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
-  />
+    content="Contract Engine 2026 · Registro inteligente, validación y verificación"
+  >
+
+  <meta name="theme-color" content="#050507">
 
   <title>Contract Engine 2026</title>
 
-  <style>
-    :root {
-      --bg: #070709;
-      --surface: rgba(255, 255, 255, 0.055);
-      --surface-strong: rgba(255, 255, 255, 0.085);
-      --line: rgba(255, 255, 255, 0.11);
-      --text: #f5f5f7;
-      --muted: #a6a6ad;
-      --accent: #ffffff;
-      --success: #70d39a;
-      --warning: #e8c16a;
-      --danger: #e77d7d;
-      --radius: 24px;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        Inter,
-        system-ui,
-        sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 0%, rgba(255,255,255,.08), transparent 30%),
-        radial-gradient(circle at 85% 10%, rgba(255,255,255,.05), transparent 24%),
-        var(--bg);
-      letter-spacing: -0.01em;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-    }
-
-    .app {
-      width: min(1180px, 100%);
-      margin: 0 auto;
-      padding:
-        max(18px, env(safe-area-inset-top))
-        18px
-        max(36px, env(safe-area-inset-bottom));
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 8px 0 26px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      color: #111;
-      background: #fff;
-      font-weight: 800;
-      box-shadow: 0 10px 32px rgba(255,255,255,.08);
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .brand-text span {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 16px rgba(112,211,154,.55);
-    }
-
-    .hero {
-      padding: 16px 0 28px;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero h1 {
-      max-width: 760px;
-      margin: 8px 0 12px;
-      font-size: clamp(34px, 7vw, 68px);
-      line-height: .98;
-      letter-spacing: -.045em;
-    }
-
-    .hero p {
-      max-width: 720px;
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 15px;
-    }
-
-    .notice {
-      margin-top: 18px;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .notice strong {
-      color: var(--text);
-    }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(280px, .8fr);
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-    }
-
-    .main-card {
-      padding: 20px;
-    }
-
-    .side-card {
-      padding: 18px;
-      height: fit-content;
-      position: sticky;
-      top: 18px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: 21px;
-      letter-spacing: -.025em;
-    }
-
-    .section-header p {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .step-counter {
-      white-space: nowrap;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .progress {
-      height: 5px;
-      border-radius: 99px;
-      overflow: hidden;
-      background: rgba(255,255,255,.08);
-      margin-bottom: 24px;
-    }
-
-    .progress > div {
-      height: 100%;
-      width: 20%;
-      border-radius: inherit;
-      background: #fff;
-      transition: width .25s ease;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field.hidden {
-      display: none;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .field small {
-      display: block;
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .input,
-    .select,
-    .textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      outline: 0;
-      color: var(--text);
-      background: rgba(0,0,0,.19);
-      padding: 13px 14px;
-      transition:
-        border-color .2s ease,
-        background .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .input:focus,
-    .select:focus,
-    .textarea:focus {
-      border-color: rgba(255,255,255,.34);
-      background: rgba(255,255,255,.055);
-      box-shadow: 0 0 0 4px rgba(255,255,255,.035);
-    }
-
-    .textarea {
-      min-height: 112px;
-      resize: vertical;
-    }
-
-    .select {
-      appearance: none;
-      background-image:
-        linear-gradient(45deg, transparent 50%, #aaa 50%),
-        linear-gradient(135deg, #aaa 50%, transparent 50%);
-      background-position:
-        calc(100% - 18px) 18px,
-        calc(100% - 13px) 18px;
-      background-size:
-        5px 5px,
-        5px 5px;
-      background-repeat: no-repeat;
-    }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .option {
-      position: relative;
-    }
-
-    .option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .option label {
-      display: block;
-      min-height: 66px;
-      padding: 13px;
-      margin: 0;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.025);
-      cursor: pointer;
-      transition:
-        border-color .2s ease,
-        background .2s ease,
-        transform .2s ease;
-    }
-
-    .option label:hover {
-      transform: translateY(-1px);
-    }
-
-    .option input:checked + label {
-      border-color: rgba(255,255,255,.55);
-      background: rgba(255,255,255,.09);
-    }
-
-    .option-title {
-      display: block;
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .option-description {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.35;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .button {
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 14px;
-      font-weight: 650;
-      transition:
-        transform .2s ease,
-        opacity .2s ease,
-        background .2s ease;
-    }
-
-    .button:active {
-      transform: scale(.985);
-    }
-
-    .button-secondary {
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--line);
-    }
-
-    .button-primary {
-      color: #111;
-      background: #fff;
-    }
-
-    .button-danger {
-      color: #fff;
-      background: rgba(231,125,125,.13);
-      border: 1px solid rgba(231,125,125,.25);
-    }
-
-    .button:disabled {
-      opacity: .45;
-      cursor: not-allowed;
-    }
-
-    .summary-list {
-      display: grid;
-      gap: 9px;
-    }
-
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 11px 0;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      font-size: 12px;
-    }
-
-    .summary-item:last-child {
-      border-bottom: 0;
-    }
-
-    .summary-item span:first-child {
-      color: var(--muted);
-    }
-
-    .summary-item span:last-child {
-      text-align: right;
-      max-width: 60%;
-      word-break: break-word;
-    }
-
-    .engine-list {
-      margin: 16px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .engine-list li {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      padding: 9px 0;
-      color: var(--muted);
-      font-size: 12px;
-      border-bottom: 1px solid rgba(255,255,255,.055);
-    }
-
-    .engine-list li:last-child {
-      border-bottom: 0;
-    }
-
-    .engine-step {
-      width: 23px;
-      height: 23px;
-      flex: 0 0 23px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .certificate {
-      display: none;
-      margin-top: 18px;
-      padding: 22px;
-    }
-
-    .certificate.visible {
-      display: block;
-    }
-
-    .certificate-shell {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .certificate-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-
-    .certificate-title {
-      font-size: 31px;
-      letter-spacing: -.035em;
-      margin: 4px 0;
-    }
-
-    .certificate-subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .verified {
-      padding: 8px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(112,211,154,.26);
-      color: var(--success);
-      background: rgba(112,211,154,.08);
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .certificate-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-    }
-
-    .certificate-field {
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .certificate-field .label {
-      margin-bottom: 5px;
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    .certificate-field .value {
-      font-size: 14px;
-      word-break: break-word;
-    }
-
-    .qr-box {
-      width: 172px;
-      height: 172px;
-      margin: 22px auto 12px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: #fff;
-      color: #111;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .qr-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      background:
-        repeating-linear-gradient(0deg, #111 0 4px, #fff 4px 8px),
-        repeating-linear-gradient(90deg, transparent 0 5px, rgba(255,255,255,.3) 5px 8px);
-      mix-blend-mode: multiply;
-      border: 8px solid #fff;
-    }
-
-    .qr-note {
-      text-align: center;
-      margin: 0;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.4;
-    }
-
-    .certificate-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 22px;
-      flex-wrap: wrap;
-    }
-
-    .footer {
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: max(20px, env(safe-area-inset-bottom));
-      transform: translate(-50%, 130%);
-      padding: 12px 15px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(20,20,23,.92);
-      color: var(--text);
-      box-shadow: var(--shadow);
-      font-size: 12px;
-      transition: transform .25s ease;
-      z-index: 99;
-    }
-
-    .toast.visible {
-      transform: translate(-50%, 0);
-    }
-
-    .validation {
-      margin-top: 8px;
-      color: var(--danger);
-      font-size: 11px;
-      display: none;
-    }
-
-    .validation.visible {
-      display: block;
-    }
-
-    @media (max-width: 860px) {
-      .dashboard {
-        grid-template-columns: 1fr;
-      }
-
-      .side-card {
-        position: static;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .app {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .topbar {
-        align-items: flex-start;
-      }
-
-      .status-pill {
-        display: none;
-      }
-
-      .main-card,
-      .side-card,
-      .certificate {
-        padding: 16px;
-      }
-
-      .option-grid,
-      .certificate-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .certificate-top {
-        flex-direction: column;
-      }
-
-      .actions {
-        position: sticky;
-        bottom: 0;
-        padding: 10px 0 max(8px, env(safe-area-inset-bottom));
-        background: linear-gradient(
-          to top,
-          var(--bg) 70%,
-          transparent
-        );
-      }
-
-      .actions .button {
-        flex: 1;
-      }
-    }
-
-    @media print {
-      body {
-        background: #fff;
-        color: #111;
-      }
-
-      .topbar,
-      .hero,
-      .dashboard,
-      .footer,
-      .certificate-actions {
-        display: none !important;
-      }
-
-      .certificate {
-        display: block !important;
-        border: 0;
-        box-shadow: none;
-        background: #fff;
-      }
-
-      .certificate-field {
-        border-color: #ddd;
-        background: #fff;
-      }
-
-      .certificate-field .label,
-      .certificate-subtitle,
-      .qr-note {
-        color: #666;
-      }
-
-      .verified {
-        border-color: #aaa;
-        color: #333;
-        background: #f4f4f4;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- QRCode.js -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"
+  ></script>
+
+  <script defer src="js/form-engine.js"></script>
+  <script defer src="js/qr-engine.js"></script>
+  <script defer src="js/certificate.js"></script>
+  <script defer src="js/app.js"></script>
 </head>
 
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark">CE</div>
-        <div class="brand-text">
-          <strong>Contract Engine</strong>
-          <span>2026 · Intelligent Registry</span>
-        </div>
-      </div>
 
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        Sistema operativo
-      </div>
-    </header>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">CE</div>
 
-    <section class="hero">
-      <div class="eyebrow">INFINITIVO + FORMA ÁUREA</div>
-
-      <h1>
-        Registrar. Validar.<br />
-        Verificar.
-      </h1>
-
-      <p>
-        Motor web modular para recopilar datos, aplicar reglas de validación,
-        generar un identificador de registro y producir una vista de
-        certificado verificable.
-      </p>
-
-      <div class="notice">
-        <strong>Modo seguro de prototipo:</strong>
-        esta versión está preparada para registros legítimos, administrativos,
-        educativos o ficticios. No implementa mecanismos para esclavitud,
-        servidumbre, explotación o privación de derechos.
-      </div>
-    </section>
-
-    <section class="dashboard">
-      <main class="card main-card">
-        <div class="section-header">
-          <div>
-            <div class="eyebrow">REGISTRO</div>
-            <h2 id="stepTitle">Identidad</h2>
-            <p id="stepDescription">
-              Introducir la información básica del registro.
-            </p>
-          </div>
-
-          <div class="step-counter" id="stepCounter">
-            1 / 5
-          </div>
-        </div>
-
-        <div class="progress">
-          <div id="progressBar"></div>
-        </div>
-
-        <form id="registryForm" novalidate>
-          <!-- STEP 1 -->
-          <section class="step" data-step="0">
-            <div class="field">
-              <label for="fullName">Nombre completo</label>
-              <input
-                class="input"
-                id="fullName"
-                name="fullName"
-                type="text"
-                autocomplete="name"
-                placeholder="Nombre y apellidos"
-                required
-              />
-              <small>Utilizar el nombre que corresponda al registro.</small>
-            </div>
-
-            <div class="field">
-              <label for="identifier">Identificador externo</label>
-              <input
-                class="input"
-                id="identifier"
-                name="identifier"
-                type="text"
-                autocomplete="off"
-                placeholder="DNI, ID interno o referencia"
-              />
-              <small>
-                No introducir secretos, contraseñas ni información innecesaria.
-              </small>
-            </div>
-
-            <div class="field">
-              <label for="email">Correo electrónico</label>
-              <input
-                class="input"
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="nombre@example.com"
-              />
-            </div>
-          </section>
-
-          <!-- STEP 2 -->
-          <section class="step" data-step="1" hidden>
-            <div class="field">
-              <label for="entity">Entidad / organización</label>
-              <input
-                class="input"
-                id="entity"
-                name="entity"
-                type="text"
-                placeholder="Empresa, organización o proyecto"
-                required
-              />
-            </div>
-
-            <div class="field">
-              <label for="recordType">Tipo de registro</label>
-
-              <div class="option-grid">
-                <div class="option">
-                  <input
-                    id="typeLaboral"
-                    name="recordType"
-                    value="Laboral"
-                    type="radio"
-                    required
-                  />
-                  <label for="typeLaboral">
-                    <span class="option-title">Laboral</span>
-                    <span class="option-description">
-                      Registro relacionado con una relación profesional.
-                    </span>
-                  </label>
-                </div>
-
-                <div class="option">
-                  <input
-                    id="typeService"
-                    name="recordType"
-                    value="Servicios"
-                    type="radio"
-                  />
-                  <label for="typeService">
-                    <span class="option-title">Servicios</span>
-                    <span class="option-description">
-                      Prestación profesional o proyecto.
-                    </span>
-                  </label>
-                </div>
-
-                <div class="option">
-                  <input
-                    id="typeEducation"
-                    name="recordType"
-                    value="Educativo"
-                    type="radio"
-                  />
-                  <label for="typeEducation">
-                    <span class="option-title">Educativo</span>
-                    <span class="option-description">
-                      Simulación, práctica o documentación académica.
-                    </span>
-                  </label>
-                </div>
-
-                <div class="option">
-                  <input
-                    id="typeInternal"
-                    name="recordType"
-                    value="Interno"
-                    type="radio"
-                  />
-                  <label for="typeInternal">
-                    <span class="option-title">Interno</span>
-                    <span class="option-description">
-                      Registro administrativo interno.
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- STEP 3 -->
-          <section class="step" data-step="2" hidden>
-            <div class="field">
-              <label for="role">Puesto / función</label>
-              <input
-                class="input"
-                id="role"
-                name="role"
-                type="text"
-                placeholder="Ej. Tripulante, consultor, diseñador"
-                required
-              />
-            </div>
-
-            <div class="field">
-              <label for="startDate">Fecha de inicio</label>
-              <input
-                class="input"
-                id="startDate"
-                name="startDate"
-                type="date"
-                required
-              />
-            </div>
-
-            <div class="field">
-              <label for="status">Estado</label>
-              <select class="select" id="status" name="status">
-                <option value="Activo">Activo</option>
-                <option value="Pendiente">Pendiente</option>
-                <option value="Finalizado">Finalizado</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="terms">
-                Descripción / condiciones generales
-              </label>
-              <textarea
-                class="textarea"
-                id="terms"
-                name="terms"
-                placeholder="Descripción breve y legítima del registro..."
-              ></textarea>
-            </div>
-          </section>
-
-          <!-- STEP 4 -->
-          <section class="step" data-step="3" hidden>
-            <div class="field">
-              <label for="documentStatus">Documentación</label>
-              <select
-                class="select"
-                id="documentStatus"
-                name="documentStatus"
-              >
-                <option value="Completa">Completa</option>
-                <option value="Pendiente">Pendiente</option>
-                <option value="No requerida">No requerida</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="jurisdiction">Marco / jurisdicción</label>
-              <input
-                class="input"
-                id="jurisdiction"
-                name="jurisdiction"
-                type="text"
-                placeholder="País / jurisdicción aplicable"
-              />
-            </div>
-
-            <div class="notice">
-              La aplicación puede recopilar metadatos para organización y
-              verificación. No sustituye asesoramiento jurídico ni crea por sí
-              sola una firma electrónica jurídicamente cualificada.
-            </div>
-          </section>
-
-          <!-- STEP 5 -->
-          <section class="step" data-step="4" hidden>
-            <div class="field">
-              <label>Revisión</label>
-
-              <div class="summary-list" id="reviewSummary">
-                <!-- JS -->
-              </div>
-
-              <div
-                id="validationMessage"
-                class="validation"
-                role="alert"
-              ></div>
-            </div>
-          </section>
-
-          <div class="actions">
-            <button
-              type="button"
-              class="button button-secondary"
-              id="backButton"
-            >
-              Atrás
-            </button>
-
-            <button
-              type="button"
-              class="button button-primary"
-              id="nextButton"
-            >
-              Continuar
-            </button>
-          </div>
-        </form>
-      </main>
-
-      <aside class="card side-card">
-        <div class="eyebrow">MOTOR</div>
-
-        <ul class="engine-list">
-          <li>
-            <span class="engine-step">01</span>
-            Captar
-          </li>
-          <li>
-            <span class="engine-step">02</span>
-            Interpretar
-          </li>
-          <li>
-            <span class="engine-step">03</span>
-            Normalizar
-          </li>
-          <li>
-            <span class="engine-step">04</span>
-            Validar
-          </li>
-          <li>
-            <span class="engine-step">05</span>
-            Generar
-          </li>
-          <li>
-            <span class="engine-step">06</span>
-            Verificar
-          </li>
-        </ul>
-
-        <div style="margin-top:20px" class="eyebrow">
-          ESTADO DEL REGISTRO
-        </div>
-
-        <div class="summary-list" style="margin-top:8px">
-          <div class="summary-item">
-            <span>Estado</span>
-            <span id="sideStatus">Borrador</span>
-          </div>
-
-          <div class="summary-item">
-            <span>ID</span>
-            <span id="sideId">Pendiente</span>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          class="button button-danger"
-          id="resetButton"
-          style="width:100%;margin-top:18px"
-        >
-          Reiniciar
-        </button>
-      </aside>
-    </section>
-
-    <section class="card certificate" id="certificateView">
-      <div class="certificate-shell">
-        <div class="certificate-top">
-          <div>
-            <div class="eyebrow">DIGITAL CERTIFICATE</div>
-            <h2 class="certificate-title">Certificado de registro</h2>
-            <p class="certificate-subtitle">
-              Registro generado localmente por Contract Engine 2026.
-            </p>
-          </div>
-
-          <div class="verified">
-            ✓ VERIFICADO LOCALMENTE
-          </div>
-        </div>
-
-        <div class="certificate-grid">
-          <div class="certificate-field">
-            <div class="label">Titular</div>
-            <div class="value" id="certName">—</div>
-          </div>
-
-          <div class="certificate-field">
-            <div class="label">Organización</div>
-            <div class="value" id="certEntity">—</div>
-          </div>
-
-          <div class="certificate-field">
-            <div class="label">Tipo</div>
-            <div class="value" id="certType">—</div>
-          </div>
-
-          <div class="certificate-field">
-            <div class="label">Función</div>
-            <div class="value" id="certRole">—</div>
-          </div>
-
-          <div class="certificate-field">
-            <div class="label">Fecha</div>
-            <div class="value" id="certDate">—</div>
-          </div>
-
-          <div class="certificate-field">
-            <div class="label">Estado</div>
-            <div class="value" id="certStatus">—</div>
-          </div>
-
-          <div class="certificate-field" style="grid-column:1 / -1">
-            <div class="label">Identificador de registro</div>
-            <div class="value" id="certId">—</div>
-          </div>
-        </div>
-
-        <div class="qr-box" aria-label="Código de verificación">
-          <div class="qr-inner" id="qrVisual"></div>
-        </div>
-
-        <p class="qr-note">
-          Este QR es una representación visual de prototipo. En una versión de
-          producción deberá sustituirse por un código QR criptográficamente
-          asociado a una URL de verificación.
-        </p>
-
-        <div class="certificate-actions">
-          <button
-            type="button"
-            class="button button-primary"
-            id="printButton"
-          >
-            Imprimir / PDF
-          </button>
-
-          <button
-            type="button"
-            class="button button-secondary"
-            id="copyIdButton"
-          >
-            Copiar ID
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      Contract Engine 2026 · Prototipo frontend · Datos almacenados localmente
-      en este dispositivo.
-    </footer>
+    <div>
+      <strong>Contract Engine</strong>
+      <span>2026 · Intelligent Registry</span>
+    </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-
-  <script>
-    "use strict";
-
-    /*
-      Contract Engine 2026
-      Frontend prototype
-
-      Principios:
-      captar → interpretar → normalizar → validar → generar → verificar
-
-      Esta versión usa localStorage y no envía datos a un servidor.
-    */
-
-    const steps = [
-      {
-        title: "Identidad",
-        description: "Introducir la información básica del registro."
-      },
-      {
-        title: "Organización",
-        description: "Definir la entidad y el tipo de registro."
-      },
-      {
-        title: "Relación",
-        description: "Añadir función, fechas y estado."
-      },
-      {
-        title: "Documentación",
-        description: "Completar la información administrativa."
-      },
-      {
-        title: "Revisión",
-        description: "Comprobar los datos antes de generar el registro."
-      }
-    ];
-
-    let currentStep = 0;
-    let generatedId = null;
-
-    const form = document.getElementById("registryForm");
-    const stepTitle = document.getElementById("stepTitle");
-    const stepDescription = document.getElementById("stepDescription");
-    const stepCounter = document.getElementById("stepCounter");
-    const progressBar = document.getElementById("progressBar");
-    const backButton = document.getElementById("backButton");
-    const nextButton = document.getElementById("nextButton");
-    const resetButton = document.getElementById("resetButton");
-    const validationMessage = document.getElementById("validationMessage");
-    const reviewSummary = document.getElementById("reviewSummary");
-    const certificateView = document.getElementById("certificateView");
-
-    const sideStatus = document.getElementById("sideStatus");
-    const sideId = document.getElementById("sideId");
-    const toast = document.getElementById("toast");
-
-    const fields = {
-      fullName: document.getElementById("fullName"),
-      identifier: document.getElementById("identifier"),
-      email: document.getElementById("email"),
-      entity: document.getElementById("entity"),
-      role: document.getElementById("role"),
-      startDate: document.getElementById("startDate"),
-      status: document.getElementById("status"),
-      terms: document.getElementById("terms"),
-      documentStatus: document.getElementById("documentStatus"),
-      jurisdiction: document.getElementById("jurisdiction")
-    };
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("visible");
-
-      window.clearTimeout(showToast.timeout);
-
-      showToast.timeout = window.setTimeout(() => {
-        toast.classList.remove("visible");
-      }, 2200);
-    }
-
-    function getFormData() {
-      const data = Object.fromEntries(new FormData(form).entries());
-
-      return {
-        fullName: data.fullName?.trim() || "",
-        identifier: data.identifier?.trim() || "",
-        email: data.email?.trim() || "",
-        entity: data.entity?.trim() || "",
-        recordType: data.recordType || "",
-        role: data.role?.trim() || "",
-        startDate: data.startDate || "",
-        status: data.status || "Activo",
-        terms: data.terms?.trim() || "",
-        documentStatus: data.documentStatus || "Completa",
-        jurisdiction: data.jurisdiction?.trim() || ""
-      };
-    }
-
-    function saveDraft() {
-      const data = getFormData();
-
-      localStorage.setItem(
-        "contract-engine-draft",
-        JSON.stringify({
-          data,
-          currentStep,
-          generatedId
-        })
-      );
-    }
-
-    function loadDraft() {
-      const raw = localStorage.getItem("contract-engine-draft");
-
-      if (!raw) return;
-
-      try {
-        const stored = JSON.parse(raw);
-
-        if (stored.data) {
-          const data = stored.data;
-
-          Object.entries(data).forEach(([key, value]) => {
-            if (key === "recordType") {
-              const radio = document.querySelector(
-                `input[name="recordType"][value="${CSS.escape(value)}"]`
-              );
-
-              if (radio) radio.checked = true;
-              return;
-            }
-
-            const field = document.getElementById(key);
-
-            if (field && typeof value === "string") {
-              field.value = value;
-            }
-          });
-        }
-
-        if (
-          Number.isInteger(stored.currentStep) &&
-          stored.currentStep >= 0 &&
-          stored.currentStep < steps.length
-        ) {
-          currentStep = stored.currentStep;
-        }
-
-        if (stored.generatedId) {
-          generatedId = stored.generatedId;
-        }
-      } catch {
-        localStorage.removeItem("contract-engine-draft");
-      }
-    }
-
-    function validateStep(stepIndex) {
-      validationMessage.textContent = "";
-      validationMessage.classList.remove("visible");
-
-      if (stepIndex === 0) {
-        if (!fields.fullName.value.trim()) {
-          return fail("Introduce el nombre completo.");
-        }
-
-        if (
-          fields.email.value.trim() &&
-          !fields.email.checkValidity()
-        ) {
-          return fail("Introduce un correo electrónico válido.");
-        }
-      }
-
-      if (stepIndex === 1) {
-        if (!fields.entity.value.trim()) {
-          return fail("Introduce la organización.");
-        }
-
-        const selectedType = document.querySelector(
-          'input[name="recordType"]:checked'
-        );
-
-        if (!selectedType) {
-          return fail("Selecciona un tipo de registro.");
-        }
-      }
-
-      if (stepIndex === 2) {
-        if (!fields.role.value.trim()) {
-          return fail("Introduce el puesto o función.");
-        }
-
-        if (!fields.startDate.value) {
-          return fail("Selecciona la fecha de inicio.");
-        }
-      }
-
-      return true;
-    }
-
-    function fail(message) {
-      validationMessage.textContent = message;
-      validationMessage.classList.add("visible");
-      showToast(message);
-      return false;
-    }
-
-    function renderReview() {
-      const data = getFormData();
-
-      const rows = [
-        ["Titular", data.fullName || "—"],
-        ["Identificador externo", data.identifier || "—"],
-        ["Correo", data.email || "—"],
-        ["Organización", data.entity || "—"],
-        ["Tipo", data.recordType || "—"],
-        ["Puesto / función", data.role || "—"],
-        ["Fecha de inicio", data.startDate || "—"],
-        ["Estado", data.status || "—"],
-        ["Documentación", data.documentStatus || "—"],
-        ["Jurisdicción", data.jurisdiction || "—"]
-      ];
-
-      reviewSummary.innerHTML = rows
-        .map(
-          ([label, value]) => `
-            <div class="summary-item">
-              <span>${escapeHtml(label)}</span>
-              <span>${escapeHtml(value)}</span>
-            </div>
-          `
-        )
-        .join("");
-    }
-
-    function updateUI() {
-      const step = steps[currentStep];
-
-      stepTitle.textContent = step.title;
-      stepDescription.textContent = step.description;
-      stepCounter.textContent = `${currentStep + 1} / ${steps.length}`;
-
-      progressBar.style.width =
-        `${((currentStep + 1) / steps.length) * 100}%`;
-
-      document.querySelectorAll(".step").forEach((section, index) => {
-        section.hidden = index !== currentStep;
-      });
-
-      backButton.disabled = currentStep === 0;
-
-      nextButton.textContent =
-        currentStep === steps.length - 1
-          ? "Generar registro"
-          : "Continuar";
-
-      if (currentStep === steps.length - 1) {
-        renderReview();
-      }
-
-      saveDraft();
-      updateSidePanel();
-    }
-
-    function updateSidePanel() {
-      sideStatus.textContent =
-        generatedId ? "Generado" : currentStep > 0 ? "En progreso" : "Borrador";
-
-      sideId.textContent = generatedId || "Pendiente";
-    }
-
-    function normalize(value) {
-      return String(value)
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toUpperCase()
-        .replace(/[^A-Z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-    }
-
-    function createRegistryId() {
-      const now = new Date();
-
-      const year = now.getFullYear();
-
-      const random = Math.random()
-        .toString(36)
-        .slice(2, 8)
-        .toUpperCase();
-
-      return `CE-${year}-${random}`;
-    }
-
-    function populateCertificate() {
-      const data = getFormData();
-
-      if (!generatedId) {
-        generatedId = createRegistryId();
-      }
-
-      document.getElementById("certName").textContent =
-        data.fullName || "—";
-
-      document.getElementById("certEntity").textContent =
-        data.entity || "—";
-
-      document.getElementById("certType").textContent =
-        data.recordType || "—";
-
-      document.getElementById("certRole").textContent =
-        data.role || "—";
-
-      document.getElementById("certDate").textContent =
-        data.startDate || "—";
-
-      document.getElementById("certStatus").textContent =
-        data.status || "—";
-
-      document.getElementById("certId").textContent =
-        generatedId;
-
-      /*
-        Prototipo visual de QR.
-        En producción se sustituirá por una implementación QR real que
-        apunte a /verify?id=...
-      */
-      const qrVisual = document.getElementById("qrVisual");
-
-      qrVisual.style.background = generatePseudoQr(generatedId);
-
-      certificateView.classList.add("visible");
-
-      saveDraft();
-      updateSidePanel();
-
-      certificateView.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-      showToast("Registro generado.");
-    }
-
-    function generatePseudoQr(seed) {
-      let hash = 0;
-
-      for (let i = 0; i < seed.length; i++) {
-        hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
-      }
-
-      const cells = 25;
-      const size = 100 / cells;
-
-      const parts = [
-        "linear-gradient(90deg,#111 0 0)",
-        "linear-gradient(#fff,#fff)"
-      ];
-
-      const gradients = [];
-
-      function finder(x, y) {
-        gradients.push(
-          `linear-gradient(#111 0 0)`,
-          `linear-gradient(#fff 0 0)`
-        );
-      }
-
-      /*
-        Patrón determinista simplificado.
-        Solo sirve para mostrar la arquitectura visual.
-      */
-      for (let y = 0; y < cells; y++) {
-        for (let x = 0; x < cells; x++) {
-          const n =
-            (hash ^
-              (x * 2654435761) ^
-              (y * 2246822519)) >>> 0;
-
-          if ((n % 7) < 3) {
-            const left = x * size;
-            const top = y * size;
-
-            gradients.push(
-              `linear-gradient(#111,#111) no-repeat ${left}% ${top}% / ${size}% ${size}%`
-            );
-          }
-        }
-      }
-
-      function finderBlock(offsetX, offsetY) {
-        const px = offsetX * size;
-        const py = offsetY * size;
-        const w = 7 * size;
-
-        gradients.push(
-          `linear-gradient(#111,#111) no-repeat ${px}% ${py}% / ${w}% ${w}%`,
-          `linear-gradient(#fff,#fff) no-repeat ${(offsetX + 1) * size}% ${(offsetY + 1) * size}% / ${5 * size}% ${5 * size}%`,
-          `linear-gradient(#111,#111) no-repeat ${(offsetX + 2) * size}% ${(offsetY + 2) * size}% / ${3 * size}% ${3 * size}%`
-        );
-      }
-
-      finderBlock(0, 0);
-      finderBlock(cells - 7, 0);
-      finderBlock(0, cells - 7);
-
-      return gradients.join(",");
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    nextButton.addEventListener("click", () => {
-      if (!validateStep(currentStep)) return;
-
-      if (currentStep < steps.length - 1) {
-        currentStep += 1;
-        updateUI();
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-        return;
-      }
-
-      populateCertificate();
-    });
-
-    backButton.addEventListener("click", () => {
-      if (currentStep === 0) return;
-
-      currentStep -= 1;
-      updateUI();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-
-    resetButton.addEventListener("click", () => {
-      const confirmed = window.confirm(
-        "¿Reiniciar el formulario y eliminar el borrador local?"
-      );
-
-      if (!confirmed) return;
-
-      form.reset();
-      currentStep = 0;
-      generatedId = null;
-
-      certificateView.classList.remove("visible");
-
-      localStorage.removeItem("contract-engine-draft");
-
-      updateUI();
-      showToast("Formulario reiniciado.");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-
-    document.getElementById("printButton").addEventListener(
-      "click",
-      () => window.print()
-    );
-
-    document.getElementById("copyIdButton").addEventListener(
-      "click",
-      async () => {
-        if (!generatedId) return;
-
-        try {
-          await navigator.clipboard.writeText(generatedId);
-          showToast("ID copiado.");
-        } catch {
-          showToast(generatedId);
-        }
-      }
-    );
-
-    form.addEventListener("input", saveDraft);
-    form.addEventListener("change", saveDraft);
-
-    /*
-      Fecha actual como valor inicial si está vacía.
-    */
-    if (!fields.startDate.value) {
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, "0");
-      const dd = String(now.getDate()).padStart(2, "0");
-
-      fields.startDate.value = `${yyyy}-${mm}-${dd}`;
-    }
-
-    loadDraft();
-    updateUI();
-  </script>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Local
+  </div>
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      INFINITIVO + FORMA ÁUREA
+    </div>
+
+    <h1>
+      Registrar.<br>
+      Validar.<br>
+      Verificar.
+    </h1>
+
+    <p>
+      Motor modular para crear registros administrativos estructurados,
+      normalizados y verificables.
+    </p>
+
+    <div class="notice">
+      <strong>Uso legítimo</strong>
+      <span>
+        Prototipo destinado a registros administrativos, educativos,
+        laborales o ficticios legítimos. No constituye un sistema de
+        esclavitud, servidumbre, explotación ni privación de derechos.
+      </span>
+    </div>
+
+  </section>
+
+
+  <section class="engine">
+
+    <div class="engine-stage active">
+      <span>01</span>
+      <strong>Captar</strong>
+    </div>
+
+    <div class="engine-stage">
+      <span>02</span>
+      <strong>Interpretar</strong>
+    </div>
+
+    <div class="engine-stage">
+      <span>03</span>
+      <strong>Normalizar</strong>
+    </div>
+
+    <div class="engine-stage">
+      <span>04</span>
+      <strong>Validar</strong>
+    </div>
+
+    <div class="engine-stage">
+      <span>05</span>
+      <strong>Generar</strong>
+    </div>
+
+    <div class="engine-stage">
+      <span>06</span>
+      <strong>Verificar</strong>
+    </div>
+
+  </section>
+
+
+  <section class="card form-card">
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+
+    <!-- STEP 0 -->
+
+    <div class="form-step active" data-step="0">
+
+      <div class="step-heading">
+        <span>01</span>
+        <div>
+          <h2>Identidad</h2>
+          <p>Introduce los datos básicos del titular.</p>
+        </div>
+      </div>
+
+      <label>
+        Nombre completo
+        <input
+          id="fullName"
+          name="fullName"
+          type="text"
+          autocomplete="name"
+          placeholder="Nombre y apellidos"
+        >
+      </label>
+
+      <label>
+        Identificador
+        <input
+          id="identifier"
+          name="identifier"
+          type="text"
+          placeholder="DNI, NIE, pasaporte o referencia"
+        >
+      </label>
+
+      <label>
+        Correo electrónico
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="nombre@ejemplo.com"
+        >
+      </label>
+
+    </div>
+
+
+    <!-- STEP 1 -->
+
+    <div class="form-step" data-step="1">
+
+      <div class="step-heading">
+        <span>02</span>
+        <div>
+          <h2>Organización</h2>
+          <p>Define la entidad y la naturaleza del registro.</p>
+        </div>
+      </div>
+
+      <label>
+        Organización / entidad
+        <input
+          id="entity"
+          name="entity"
+          type="text"
+          placeholder="Empresa, institución u organización"
+        >
+      </label>
+
+      <fieldset>
+
+        <legend>Tipo de registro</legend>
+
+        <label class="radio-card">
+          <input type="radio" name="recordType" value="Laboral">
+          <span>Laboral</span>
+        </label>
+
+        <label class="radio-card">
+          <input type="radio" name="recordType" value="Servicios">
+          <span>Servicios</span>
+        </label>
+
+        <label class="radio-card">
+          <input type="radio" name="recordType" value="Educativo">
+          <span>Educativo</span>
+        </label>
+
+        <label class="radio-card">
+          <input type="radio" name="recordType" value="Interno">
+          <span>Interno</span>
+        </label>
+
+        <label class="radio-card">
+          <input type="radio" name="recordType" value="Otro">
+          <span>Otro</span>
+        </label>
+
+      </fieldset>
+
+      <label id="customTypeField" class="hidden">
+        Especificar tipo
+        <input
+          id="customType"
+          name="customType"
+          type="text"
+          placeholder="Tipo de registro"
+        >
+      </label>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+
+    <div class="form-step" data-step="2">
+
+      <div class="step-heading">
+        <span>03</span>
+        <div>
+          <h2>Relación</h2>
+          <p>Define la información operativa del registro.</p>
+        </div>
+      </div>
+
+      <label>
+        Función / puesto
+        <input
+          id="role"
+          name="role"
+          type="text"
+          placeholder="Puesto o función"
+        >
+      </label>
+
+      <div class="grid-2">
+
+        <label>
+          Fecha de inicio
+          <input
+            id="startDate"
+            name="startDate"
+            type="date"
+          >
+        </label>
+
+        <label>
+          Estado
+          <select id="status" name="status">
+            <option value="">Seleccionar</option>
+            <option value="Activo">Activo</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Suspendido">Suspendido</option>
+            <option value="Finalizado">Finalizado</option>
+          </select>
+        </label>
+
+      </div>
+
+      <label id="endDateField" class="hidden">
+        Fecha de finalización / suspensión
+        <input
+          id="endDate"
+          name="endDate"
+          type="date"
+        >
+      </label>
+
+      <label>
+        Observaciones
+        <textarea
+          id="notes"
+          name="notes"
+          maxlength="1000"
+          rows="5"
+          placeholder="Información adicional relevante"
+        ></textarea>
+
+        <small>
+          <span id="notesCount">0</span>/1000
+        </small>
+      </label>
+
+    </div>
+
+
+    <!-- STEP 3 -->
+
+    <div class="form-step" data-step="3">
+
+      <div class="step-heading">
+        <span>04</span>
+        <div>
+          <h2>Documentación</h2>
+          <p>Registra el estado documental y la jurisdicción.</p>
+        </div>
+      </div>
+
+      <label>
+        Estado documental
+        <select id="documentStatus" name="documentStatus">
+          <option value="">Seleccionar</option>
+          <option value="Completa">Completa</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="No aplica">No aplica</option>
+        </select>
+      </label>
+
+      <label id="documentNoteField" class="hidden">
+        Observación documental
+        <textarea
+          id="documentNote"
+          name="documentNote"
+          rows="4"
+          placeholder="Indica qué documentación queda pendiente"
+        ></textarea>
+      </label>
+
+      <label>
+        Jurisdicción
+        <input
+          id="jurisdiction"
+          name="jurisdiction"
+          type="text"
+          placeholder="País / jurisdicción aplicable"
+        >
+      </label>
+
+      <label>
+        Referencia externa
+        <input
+          id="reference"
+          name="reference"
+          type="text"
+          placeholder="Referencia documental opcional"
+        >
+      </label>
+
+      <div class="privacy-note">
+        Los datos introducidos en este prototipo se almacenan
+        localmente en el navegador mediante <code>localStorage</code>.
+      </div>
+
+    </div>
+
+
+    <!-- STEP 4 -->
+
+    <div class="form-step" data-step="4">
+
+      <div class="step-heading">
+        <span>05</span>
+        <div>
+          <h2>Revisión</h2>
+          <p>Comprueba los datos antes de generar el registro.</p>
+        </div>
+      </div>
+
+      <div id="reviewSummary" class="review-summary"></div>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        id="backBtn"
+        class="button secondary"
+        type="button"
+        disabled
+      >
+        Atrás
+      </button>
+
+      <button
+        id="nextBtn"
+        class="button primary"
+        type="button"
+      >
+        Continuar
+      </button>
+
+      <button
+        id="generateBtn"
+        class="button primary hidden"
+        type="button"
+      >
+        Generar registro
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- RESULT -->
+
+  <section
+    id="resultCard"
+    class="card result-card hidden"
+  >
+
+    <div class="result-icon">
+      ✓
+    </div>
+
+    <div>
+      <span class="eyebrow">REGISTRO GENERADO</span>
+
+      <h2 id="resultTitle">
+        Registro creado
+      </h2>
+
+      <p>
+        El paquete de verificación ha sido generado correctamente.
+      </p>
+    </div>
+
+    <div class="registry-id">
+      <span>ID</span>
+      <strong id="registryId"></strong>
+    </div>
+
+    <div class="result-actions">
+
+      <a
+        id="certificateLink"
+        class="button primary"
+        href="#"
+      >
+        Ver certificado
+      </a>
+
+      <a
+        id="verifyLink"
+        class="button secondary"
+        href="#"
+      >
+        Verificar
+      </a>
+
+      <button
+        id="copyIdBtn"
+        class="button secondary"
+        type="button"
+      >
+        Copiar ID
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="footer-panel">
+
+    <button
+      id="resetBtn"
+      class="text-button"
+      type="button"
+    >
+      Restablecer formulario
+    </button>
+
+    <span>
+      Contract Engine 2026 · Prototype
+    </span>
+
+  </section>
+
+</main>
+
+
+<div
+  id="toast"
+  class="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
 </body>
 </html>
